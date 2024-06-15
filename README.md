@@ -1,26 +1,157 @@
-# Employee Management System
-Employee Management System using Spring Boot, Spring Security, Thymeleaf and MySQL database.
+# WorkWise : Employee Management System
 
-# YouTube Video Series
-## Employee Management Module
-<ul>
-<li><a href="https://youtu.be/U7WDfoiodOg" target="_blank">Spring Boot Thymeleaf CRUD Database Real-Time Project - PART 1 </a></li>
-<li><a href="https://youtu.be/bcV0WtOoY54" target="_blank">Spring Boot Thymeleaf CRUD Database Real-Time Project - PART 2 </a></li>
-<li><a href="https://youtu.be/dlGmqzex8GE" target="_blank">Spring Boot Thymeleaf CRUD Database Real-Time Project - PART 3 </a></li>
-<li><a href="https://youtu.be/iVAZ1bK8YGI" target="_blank">Spring Boot Thymeleaf CRUD Database Real-Time Project - PART 4 </a></li>
-<li><a href="https://youtu.be/gUapbepRa24" target="_blank">Spring Boot Thymeleaf CRUD Database Real-Time Project - PART 5 </a></li>
-<li><a href="https://youtu.be/yoZpl-iBzs4" target="_blank">Spring Boot Thymeleaf CRUD Database Real-Time Project - PART 6 </a></li>
-<li><a href="https://youtu.be/dMT6K3sxCkg" target="_blank">Spring Boot Thymeleaf CRUD Database Real-Time Project - PART 7 </a></li>
-</ul>
+This is a simple Employee Management System built with Spring Boot that supports CRUD operations (Create, Read, Update, Delete).
 
-## Registration and Login Module
-<ul>
-<li><a href="https://youtu.be/Hk70e7KR290" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 1 </a></li>
-<li><a href="https://youtu.be/JE7KaTIF1Z4" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 2 </a></li>
-<li><a href="https://youtu.be/VqitTIMG5uI" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 3 </a></li>
-<li><a href="https://youtu.be/uS8zA3W8p5s" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 4 </a></li>
-<li><a href="https://youtu.be/hPCynjmapSo" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 5 </a></li>
-<li><a href="https://youtu.be/hE_STc3eWzE" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 6 </a></li>
-<li><a href="https://youtu.be/Tu3lBxlFBlM" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 7 </a></li>
-<li><a href="https://youtu.be/KKjKFLKlCbc" target="_blank">Registration and Login with Spring Boot and Spring Security - PART 8 </a></li>
-</ul>
+## Features
+
+- Add a new employee
+- Retrieve a list of employees
+- Update employee details
+- Delete an employee
+
+## Technologies Used
+
+- Java
+- Spring Boot
+- Spring Security
+- Thymeleaf
+- MySQL
+
+### Screenshots:
+![3](https://github.com/Utsav-7/WorkWise_Employee-Management-System/assets/98468952/ad73ab53-f767-4b91-ad40-810459cabe7c)
+![2](https://github.com/Utsav-7/WorkWise_Employee-Management-System/assets/98468952/a8f8d19b-5008-4fe6-8acc-776ec4783119)
+![1](https://github.com/Utsav-7/WorkWise_Employee-Management-System/assets/98468952/29ab1505-7e71-4d15-8ccd-1d7e203bcef0)
+
+
+### Installation
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/yourusername/employee-management-system.git
+    cd employee-management-system
+    ```
+
+2. Update MySQL database configuration in `src/main/resources/application.properties`:
+
+    ```properties
+    spring.datasource.url=jdbc:mysql://localhost:3306/yourdatabase
+    spring.datasource.username=yourusername
+    spring.datasource.password=yourpassword
+
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.show-sql=true
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+    ```
+
+3. Build the project using Maven:
+
+    ```sh
+    mvn clean install
+    ```
+
+4. Run the application:
+
+    ```sh
+    mvn spring-boot:run
+    ```
+
+## API Endpoints
+
+### Create a new employee
+
+- **URL:** `/api/employees`
+- **Method:** `POST`
+- **Request Body:**
+
+    ```json
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "department": "Engineering"
+    }
+    ```
+
+### Retrieve all employees
+
+- **URL:** `/api/employees`
+- **Method:** `GET`
+
+### Retrieve an employee by ID
+
+- **URL:** `/api/employees/{id}`
+- **Method:** `GET`
+
+### Update an employee
+
+- **URL:** `/api/employees/{id}`
+- **Method:** `PUT`
+- **Request Body:**
+
+    ```json
+    {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane.doe@example.com",
+      "department": "Marketing"
+    }
+    ```
+
+### Delete an employee
+
+- **URL:** `/api/employees/{id}`
+- **Method:** `DELETE`
+
+## Project Structure
+
+```plaintext
+employee-management-system
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── net
+│   │   │       └── javaguide
+|   |   |           └── springboot
+│   │   │               └── EmployeeManagementWebappApplication
+|   |   |               ├── config
+│   │   │               │   └── SecurityConfiguration.java
+│   │   │               ├── controller
+│   │   │               │   └── EmployeeController.java
+│   │   │               │   └── MainController.java
+│   │   │               │   └── UserRegistrationController.java
+│   │   │               ├── model
+│   │   │               │   └── Employee.java
+│   │   │               │   └── Role.java
+│   │   │               │   └── User.java
+│   │   │               ├── repository
+│   │   │               │   └── EmployeeRepository.java
+│   │   │               │   └── UserRepository.java
+|   |   |               ├── dto
+│   │   │               │   └── UserRegistrationDto.java
+│   │   │               └── service
+│   │   │                   └── EmployeeService.java
+│   │   │                   └── EmployeeServiceImpl.java
+│   │   │                   └── UserService.java
+│   │   │                   └── UserServiceImpl.java
+│   │   └── resources
+│   │       ├── templates
+│   │       |   └── index.html
+│   │       │   └── login.html
+│   │       │   └── registration.html
+│   │       │   └── new_employee.html
+│   │       │   └── update_employee.html
+│   │       └── application.properties
+|   |
+|   |
+│   └── test
+│       └── java
+│           └── net
+│               └── javaguide
+|                   └── springboot
+│                       └── EmployeeManagementApplicationTests.java
+├── .gitignore
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
